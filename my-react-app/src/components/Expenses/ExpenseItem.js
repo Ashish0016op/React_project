@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import ExpenseDate from '../Expenses/ExpenseDate';
 import './ExpenseItem.css'
 const ExpenseItem=(props)=>{
@@ -6,6 +7,14 @@ const ExpenseItem=(props)=>{
         color: 'blanchedalmond',
         fontWeight: 'bold',
       };
+      const [isDeleted, setIsDeleted] = useState(false);
+
+        const deleteExpenseHandler = () => {
+            setIsDeleted(true);
+        };
+        if (isDeleted) {
+            return null;
+        }
     return (
         <div className="expense-item">
             <ExpenseDate date={props.date}/>
@@ -13,6 +22,7 @@ const ExpenseItem=(props)=>{
             <div className="expense-item__description">
                 <h2>{props.title}</h2>
                 <div className="expense-item__price">{props.amount}</div>
+                <button onClick={deleteExpenseHandler}>Delete Expense</button>
             </div>
         </div>
     );
