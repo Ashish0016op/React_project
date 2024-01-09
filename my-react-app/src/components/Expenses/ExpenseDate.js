@@ -1,4 +1,4 @@
-import './ExpenseDate.css';
+import '../Expenses/ExpenseDate.css';
 const ExpenseDate=(props)=>{
     const Month = props.date.getMonth() + 1;
     const day = props.date.getDate();

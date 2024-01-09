@@ -1,4 +1,4 @@
-import ExpenseDate from './ExpenseDate';
+import ExpenseDate from '../Expenses/ExpenseDate';
 import './ExpenseItem.css'
 const ExpenseItem=(props)=>{
     const locationStyle = {
