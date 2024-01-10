@@ -1,19 +1,27 @@
 import "./App.css";
 import Card from "./components/UI/Card";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expense from "./components/Expense";
+import { useState } from "react";
 const App=() => {
-  const expenses = [
-    { title: "Food", amount: 10, location: "patna_market ", date:new Date(2024,8,1) },
-    { title: "Petrol", amount: 100, location: "patna_market",date:new Date(2024,9,1) },
-    { title: "Movies", amount: 200, location: "patna_market",date:new Date(2024,9,1) },
-  ];
+  const [enteredExpenses, setExpenses] = useState([]);
+
+  const addExpenseHandler = (expenseData) => {
+    const newExpense = {
+      ...expenseData,
+      id: Math.random().toString()
+    };
+    setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
+  };
   return (
     <>
-      <h2>Expenses Itmes</h2>
+      <div>
+        <Expense onAddExpense={addExpenseHandler}/>
+      </div>
       <Card className="CardItems">
-        {expenses.map((expense, index) => (
+        {enteredExpenses.map((expense, index) => (
           <ExpenseItem
-            
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             location={expense.location}
