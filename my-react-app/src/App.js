@@ -3,9 +3,10 @@ import Card from "./components/UI/Card";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Expense from "./components/Expense";
 import { useState } from "react";
+import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 const App=() => {
   const [enteredExpenses, setExpenses] = useState([]);
-
+  const [filteredYear,setFilteredYear]=useState('')
   const addExpenseHandler = (expenseData) => {
     const newExpense = {
       ...expenseData,
@@ -13,11 +14,15 @@ const App=() => {
     };
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  }
   return (
     <>
       <div>
         <Expense onAddExpense={addExpenseHandler}/>
       </div>
+      <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
       <Card className="CardItems">
         {enteredExpenses.map((expense, index) => (
           <ExpenseItem
