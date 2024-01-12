@@ -37,10 +37,10 @@ const Expense = (props) => {
         setTitle('');
         setAmount('');
     }
-    
 
     return (
         <>
+            
             <form onSubmit={formHandler}>
                 <div>Add Expenses</div>
                 <label htmlFor="date">Date: </label>
@@ -55,6 +55,7 @@ const Expense = (props) => {
                 <label htmlFor="amount">Expense Amount: </label>
                 <input type="number" className="ExpenseAmount" value={enteredAmount} onChange={amountHandler} />
                 <br></br>
+                <button type="button" onClick={props.onCancel}>Cancel</button>
                 <button type="submit">
                     Add Expense
                 </button>
